@@ -7,6 +7,7 @@ import Search from "./components/Search/Search";
 export default function App() {
   const [quotes, setQuotes] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchText, setSearchText] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
@@ -22,7 +23,7 @@ export default function App() {
     }
     getData();
   }, []);
-  
+
   // const quote = {
   //   quote: "Shut up, brain. I got friends now. I don't need you anymore.",
   //   character: "Lisa Simpson",
@@ -34,10 +35,10 @@ export default function App() {
   return (
     <div className={style.mainPage}>
       <p>{errorMessage}</p>
-      <Search />
+      <Search {...{searchText, setSearchText, setQuotes}}/>
       <div className={style.quoteContainer}>
         {quotes.map((quote) => (
-          <Quote quote={quote}/>
+          <Quote key={quote.quote} quote={quote}/>
         ))}
       </div>
     </div>
