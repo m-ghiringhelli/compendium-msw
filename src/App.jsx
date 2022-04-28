@@ -1,13 +1,16 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Quote from "./components/Quote";
 import { getQuotes } from "./services/quotes";
 import style from './App.css';
 
 
 export default function App() {
+  const [quotes, setQuotes] = useState([]);
+
   useEffect(() => {
     const getData = async () => {
       const data = await getQuotes();
+      setQuotes(data);
     }
     getData();
   }, []);
@@ -20,8 +23,10 @@ export default function App() {
   }
 
   return (
-    <>
-      <Quote quote={quote}/>
-    </>
+    <div className={style.quoteContainer}>
+      {quotes.map((quote) => (
+        <Quote quote={quote}/>
+      ))}
+    </div>
   );
 }
