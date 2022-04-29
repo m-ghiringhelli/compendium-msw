@@ -11,7 +11,7 @@ export default function Search({ searchText, setSearchText, setQuotes }) {
     getData();
   }
   return (
-    <div className={style.search}>
+    <div className={style.search} data-testid='search'>
       <input 
         type='text' 
         placeholder='find quotes by character'
