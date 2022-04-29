@@ -1,4 +1,4 @@
-import { screen, render, getByPlaceholderText, getByTestId } from '@testing-library/react'
+import { screen, render } from '@testing-library/react'
 import Search from './Search';
 
 test('Should render search component', () => {
@@ -10,8 +10,7 @@ test('Should render search component', () => {
   expect(container).toBeInTheDocument();
   expect(search).toBeInTheDocument();
   expect(button).toBeInTheDocument();
+  
   expect(container).toContainElement(search);
   expect(container).toContainElement(button);
-
-  screen.debug();
 })
